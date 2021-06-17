@@ -19,7 +19,7 @@ const expressRequestId = require("express-request-id");
 const tracer = require("../tracer");
 
 const addRequestId = expressRequestId();
-const jsonBodyParser = bodyParser.json();
+const jsonBodyParser = bodyParser.json({ limit: "3000kb" });
 
 const traceRequest = (req, res, next) => {
   tracer.verbose(`Request received | ${req.method} => ${req.url} | Assigned id: ${req.id}`);
